@@ -1,0 +1,38 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+driver = webdriver.Chrome(executable_path='C:/chromedriver.exe')
+driver.maximize_window()
+driver.get("http://practice.automationtesting.in")
+time.sleep(1)
+my_acc = driver.find_element_by_css_selector('[href="https://practice.automationtesting.in/my-account/"]')
+my_acc.click()
+time.sleep(1)
+reg_email = driver.find_element_by_id('reg_email')
+reg_email.send_keys('example@email.com')
+reg_pass = driver.find_element_by_id('reg_password')
+reg_pass.send_keys('$1a2b3c456def!')
+time.sleep(1)
+reg_btn = driver.find_element_by_css_selector('[name="register"]')
+reg_btn.click()
+time.sleep(2)
+
+driver.get("http://practice.automationtesting.in")
+time.sleep(1)
+my_acc = driver.find_element_by_css_selector('[href="https://practice.automationtesting.in/my-account/"]')
+my_acc.click()
+time.sleep(1)
+user_name = driver.find_element_by_id('username')
+user_name.send_keys('example@email.com')
+password = driver.find_element_by_id('password')
+password.send_keys('$1a2b3c456def!')
+time.sleep(1)
+login_btn = driver.find_element_by_css_selector('[name="login"]')
+login_btn.click()
+time.sleep(1)
+logout_btn = driver.find_element_by_css_selector('[href="https://practice.automationtesting.in/my-account/customer-logout/"]:first-child')
+if logout_btn:
+    print('Элемент "Logout" есть на странице')
+else:
+    print('Элемента "Logout" нет на странице')
+driver.quit()
